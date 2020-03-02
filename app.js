@@ -1,10 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { detect } = require('detect-browser');
 
 const app = express();
-const db = mongoose.connect(`${process.env.MONGODB_PATH}:${process.env.MONGODB_PORT}/${process.env.MONGODB_NAME}`);
+const db = mongoose.connect(`${process.env.MONGODB_PATH}:${process.env.MONGODB_PORT}/${process.env.MONGODB_NAME}`, { "useNewUrlParser": true, "useUnifiedTopology": true });
 const port = process.env.PORT || 3000;
 
 const Event = require('./models/eventModel');
@@ -24,7 +23,6 @@ const userRateRouter = require('./routes/userRateRouter')(User);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 app.use('/api', eventRouter);
 app.use('/api', pageViewRouter);
