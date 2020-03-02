@@ -13,11 +13,11 @@ function ruotes(Browser) {
 
       const query = { name: req.params.browserName };
 
-      Browser.find(query, (err, browsers) => {
+      Browser.findOne(query, (err, browser) => {
         if (err) {
           return res.send(err);
         }
-        return res.json(browsers);
+        return res.json(browser);
       });
     });
 

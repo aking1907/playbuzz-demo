@@ -12,12 +12,11 @@ function ruotes(PageView) {
         return res.status(authResult.status).send(authResult);
 
       const query = { pageid: req.params.pageId };
-      console.log(req.params.pageId);
-      PageView.find(query, (err, pageViews) => {
+      PageView.findOne(query, (err, pageView) => {
         if (err) {
           return res.send(err);
         }
-        return res.json(pageViews);
+        return res.json(pageView);
       });
     });
 

@@ -1,4 +1,4 @@
-function upsertPageView(pageId) {
+exports.upsertPageView = (pageId) => {
   const PageView = require('../models/pageViewModel.js');
   PageView.findOne({ pageid: pageId }, (err, pageView) => {
     if (err) throw err;
@@ -16,12 +16,10 @@ function upsertPageView(pageId) {
   });
 }
 
-module.exports.upsertPageView = upsertPageView;
-
-function upsertBrowser(userAgent) {
+exports.upsertBrowser = (userAgent) => {
   const Browser = require('../models/browserModel.js');
   const UAParser = require('ua-parser-js');
-  
+
   const parser = new UAParser();
   var browserName = parser.setUA(userAgent).getBrowser().name;
 
@@ -44,9 +42,7 @@ function upsertBrowser(userAgent) {
   });
 }
 
-module.exports.upsertBrowser = upsertBrowser;
-
-function upsertCountry(ip) {
+exports.upsertCountry = (ip) => {
   const Country = require('../models/countryModel.js');
   const geoip = require('geoip-country');
   //ip = "106.97.227.239";
@@ -73,9 +69,7 @@ function upsertCountry(ip) {
   });
 }
 
-module.exports.upsertCountry = upsertCountry;
-
-function upsertUser(userId) {
+exports.upsertUser = (userId) => {
   const User = require('../models/userModel.js');
   User.findOne({ id: userId }, (err, user) => {
     if (err) throw err;
@@ -89,5 +83,3 @@ function upsertUser(userId) {
     }
   });
 }
-
-module.exports.upsertUser = upsertUser;

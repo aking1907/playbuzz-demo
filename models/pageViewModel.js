@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const pageViewModel = new Schema(
   {
     pageid: String,
-    countviews: {type:Number, default:1}
+    countviews: { type: Number, default: 1 }
   }
 );
 

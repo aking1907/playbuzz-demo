@@ -13,11 +13,11 @@ function ruotes(Country) {
 
       const query = { code: req.params.countryCode };
 
-      Country.find(query, (err, countries) => {
+      Country.findOne(query, (err, country) => {
         if (err) {
           return res.send(err);
         }
-        return res.json(countries);
+        return res.json(country);
       });
     });
 
